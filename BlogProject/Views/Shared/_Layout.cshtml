@@ -78,8 +78,8 @@
                                         <li class="menu-item-has-children">
                                             <a asp-controller="BlogPosts" asp-action="Index">Posts</a>
                                         </li>
+                                        <li><a asp-controller="Home" asp-action="ContactMe">Contact</a></li>
                                     }
-                                    <li><a asp-controller="Home" asp-action="EmailContact">Contact</a></li>
                                     @if (User.IsInRole("Administrator"))
                                     {
                                         <li class="menu-item-has-children">
@@ -128,7 +128,8 @@
                                 @if (!_SignInManager.IsSignedIn(User))
                                 {
                                     <li class=""><a class="axil-button button-rounded btn-primary" style="height:35px;display:inline-flex;align-items:center" asp-area="Identity" asp-page="/Account/Login">Login</a></li>
-                                } else
+                                }
+                                else
                                 {
                                     <li class=""><a class="axil-button button-rounded btn-primary btn-group-sm" style="height:35px;display:inline-flex;align-items:center" asp-area="Identity" asp-page="/Account/Logout" type="submit" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">Logout</a></li>
                                 }

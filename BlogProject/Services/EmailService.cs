@@ -23,17 +23,14 @@ namespace BlogProject.Services
             var emailSender = _mailSettings.Email;
 
             MimeMessage newEmail = new();
-            newEmail.Sender = MailboxAddress.Parse(email);
 
 
             //add all email addresses to the "TO" for the email
-            newEmail.Sender = MailboxAddress.Parse(emailSender);
+            newEmail.Sender = MailboxAddress.Parse(email);
 
-            foreach (var emailAddress in email.Split(";"))
-            {
-                newEmail.To.Add(MailboxAddress.Parse(emailAddress));
+            
 
-            }
+           
 
             //add the subject for the email
             newEmail.Subject = subject;

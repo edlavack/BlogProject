@@ -99,7 +99,7 @@ namespace BlogProject.Data
                 EmailConfirmed = true
                 };
 
-                await userManager.CreateAsync(adminUser, configuration["AdminPwd"]);
+                await userManager.CreateAsync(adminUser, configuration["AdminPwd"] ?? Environment.GetEnvironmentVariable("AdminPwd"));
                 await userManager.AddToRoleAsync(adminUser, _adminRole);
 
             }
@@ -116,9 +116,18 @@ namespace BlogProject.Data
                     EmailConfirmed = true
                 };
 
-                await userManager.CreateAsync(modUser, configuration["ModeratorPwd"]);
-                await userManager.AddToRoleAsync(modUser, _modRole);
 
+                try
+                {
+
+                await userManager.CreateAsync(modUser, configuration["ModeratorPwd"] ?? Environment.GetEnvironmentVariable("ModeratorPwd"));
+                await userManager.AddToRoleAsync(modUser, _modRole);
+                }
+                catch(Exception ex)
+                {
+                    var err = ex.Message;
+                    throw;
+                }
             }
 
         }

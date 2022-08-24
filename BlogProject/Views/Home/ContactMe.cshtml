@@ -1,5 +1,31 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@model BlogProject.Models.EmailData
+
+
+
+
+<div class="p-2">
+    <form asp-action="ContactMe" method="post">
+        <div class="row row-cols-1 row-cols-md-2 g-3 mb-3">
+            <div class="col col-md-12">
+                <label asp-for="EmailAddress" class="form-label">From:@Model.EmailAddress</label>
+                <input type="hidden" readonly class="form-control" asp-for="EmailAddress" />
+            </div>
+        </div>
+        <div class="row row-cols-1 g-3">
+            <div class="col">
+                <label asp-for="Subject" class="form-label">Subject:</label>
+                <input type="text" class="form-control" asp-for="Subject" />
+            </div>
+            <div class="col">
+                <label asp-for="Body" class="form-label">Message:</label>
+                <textarea class="form-control" rows=10 asp-for="Body" required></textarea>
+            </div>
+            <div class="col text-end">
+                <button class="btn btn-primary rounded-pill btnlinks" type="submit">Send</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

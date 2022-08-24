@@ -2,7 +2,7 @@
 
 namespace BlogProject.Services.Interfaces
 {
-    public class IEmailService : IEmailSender
+    public interface IEmailService : IEmailSender
 
     {
 

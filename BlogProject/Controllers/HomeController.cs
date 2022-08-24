@@ -17,8 +17,7 @@ namespace BlogProject.Controllers
         private readonly IEmailService _emailService;
         private readonly UserManager<BlogUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context, IBlogPostService blogPostService, IEmailService emailService, UserManager<BlogUser> userManager
-            )
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context, IBlogPostService blogPostService, IEmailService emailService, UserManager<BlogUser> userManager )
         {
             _logger = logger;
             _context = context;
@@ -54,10 +53,10 @@ namespace BlogProject.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult> ContactMe(int id)
+        public async Task<IActionResult>lContactMe(string? id)
         {
             string blogUserId = _userManager.GetUserId(User);
-            string blogUserEmail = (await _context.Users.FirstOrDefaultAsync(b => b.Id == blogUserId))!.Email;
+            string blogUserEmail = (await _context.Users.FirstOrDefaultAsync(b => b.Id == id))!.Email;
 
             if(blogUserId == null)
             {
