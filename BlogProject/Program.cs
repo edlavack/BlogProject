@@ -33,11 +33,11 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
 
-builder.Services.AddAuthentication().AddGoogle(googleOptions =>
-{
-    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
-    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
-});
+//builder.Services.AddAuthentication().AddGoogle(googleOptions =>
+//{
+//    googleOptions.ClientId = builder.Configuration["Authentication:Google:ClientId"];
+//    googleOptions.ClientSecret = builder.Configuration["Authentication:Google:ClientSecret"];
+//});
 
 builder.Services.AddMvc();
 
@@ -97,7 +97,7 @@ app.UseSwaggerUI(c =>
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "PublicAPI v1");
     c.InjectStylesheet("/css/swagger.css");
     c.InjectJavascript("/js/swagger.js");
-    c.DocumentTitle = "CFBlogNet6 Public API";
+    c.DocumentTitle = "BlogProject Public API";
 });
 
 
