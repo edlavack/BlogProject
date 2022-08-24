@@ -51,9 +51,6 @@ namespace BlogProject.Data
             //service: an instance of RoleManager
             var dbContextSvc = svcProvider.GetRequiredService<ApplicationDbContext>(); 
 
-            //Migration: = t update-database
-            await dbContextSvc.Database.MigrateAsync();
-
             var configurationSvc = svcProvider.GetRequiredService<IConfiguration>();
 
             //Service: An instance of RoleManager
@@ -61,7 +58,8 @@ namespace BlogProject.Data
 
             //Service: an instance of the UserManager
             var userManagerSvc = svcProvider.GetRequiredService<UserManager<BlogUser>>();
-
+            //Migration: = t update-database
+            await dbContextSvc.Database.MigrateAsync();
 
             //seed role
             await SeedRolesAsync(roleManagerSvc);
