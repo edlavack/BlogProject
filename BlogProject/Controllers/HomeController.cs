@@ -53,10 +53,10 @@ namespace BlogProject.Controllers
         }
 
         [Authorize]
-        public async Task<IActionResult>lContactMe(string? id)
+        public async Task<IActionResult>ContactMe(string? id)
         {
             string blogUserId = _userManager.GetUserId(User);
-            string blogUserEmail = (await _context.Users.FirstOrDefaultAsync(b => b.Id == id))!.Email;
+            string blogUserEmail = (await _context.Users.FirstOrDefaultAsync(b => b.Id == blogUserId))!.Email;
 
             if(blogUserId == null)
             {
@@ -76,7 +76,7 @@ namespace BlogProject.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<IActionResult> ContactMe(EmailData emailData)
+        public async Task<IActionResult>ContactMe(EmailData emailData)
         {
             if (ModelState.IsValid)
             {

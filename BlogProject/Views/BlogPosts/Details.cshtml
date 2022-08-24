@@ -223,8 +223,8 @@
                                                         @if (_signInManager.IsSignedIn(User) && comment.AuthorId == _signInManager.UserManager.GetUserId(User))
                                                         {
                                                             <div class="fa-comment-edit">
-                                                                <a asp-controller="Comments" asp-action="Delete"><i class="btn btn-primary"></i></a>
-                                                                <a asp-controller="Comments" asp-action="Edit"><i class="btn btn primary"></i></a>
+                                                                <a asp-controller="Comments" asp-action="Delete"><i class="btn btn-primary">Delete</i></a>
+                                                                <a asp-controller="Comments" asp-action="Edit"><i class="btn btn primary">Edit</i></a>
                                                             </div>
                                                         }
                                                        

@@ -19,6 +19,7 @@ namespace BlogProject.Models
         [NotMapped]
         public string? FullName { get { return $"{FirstName} {LastName}"; } }
 
+        
 
         //property for storing images
         public byte[]? ImageData { get; set; }
