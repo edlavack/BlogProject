@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using X.PagedList;
 
 namespace BlogProject.Controllers
 {
@@ -26,12 +27,13 @@ namespace BlogProject.Controllers
             _userManager = userManager;
         }
 
-        public async Task<IActionResult> AuthorPage()
+        public async Task<IActionResult> AuthorPage( int? pageNum)
         {
-            
+            int pageSize = 4;
+            int page = pageNum ?? 1;
 
-            List<BlogPost> posts = (await _blogPostService.GetAllBlogPostsAsync()).Where(b=> b.IsPublished == true).ToList();
-
+            IEnumerable<BlogPost> posts = (await _blogPostService.GetAllBlogPostsAsync()).Where(b=> b.IsPublished == true);
+            IPagedList<BlogPost> blogPosts = await posts.ToPagedListAsync(page, pageSize);
 
             return View(posts);
         }

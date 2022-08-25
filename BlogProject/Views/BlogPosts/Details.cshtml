@@ -39,7 +39,7 @@
                                             <div class="post-meta">
                                                 <div class="post-author-avatar border-rounded" style="height:100px; width:100px">
                                                     
-                                                        <img src="@_ImageService.ConvertByteArrayToFile(Model.ImageData!,Model.ImageType!, (int)DefaultImage.BlogPost)" alt="Post Images">
+                                                        <img src="~/img/Profile_Pic.jpg" alt="Post Images">
                                                     
                                                 </div>
                                                 <div class="content">
@@ -87,7 +87,7 @@
                     <div class="tagcloud">
                         @foreach (Tag tag in Model.Tags)
                         {
-                            <a href="#">@tag.Name</a>
+                            <a asp-controller="Tags" asp-action="Details" asp-route-id="@tag.Id">@tag.Name</a>
                         }
                     </div>
 
@@ -223,8 +223,8 @@
                                                         @if (_signInManager.IsSignedIn(User) && comment.AuthorId == _signInManager.UserManager.GetUserId(User))
                                                         {
                                                             <div class="fa-comment-edit">
-                                                                <a asp-controller="Comments" asp-action="Delete"><i class="btn btn-primary">Delete</i></a>
-                                                                <a asp-controller="Comments" asp-action="Edit"><i class="btn btn primary">Edit</i></a>
+                                                                <a asp-controller="Comments" asp-action="Delete"asp-route-id="@Model?.Id"><i class="btn btn-primary">Delete</i></a>
+                                                                <a asp-controller="Comments" asp-action="Edit"asp-route-id="@Model?.Id"><i class="btn btn primary">Edit</i></a>
                                                             </div>
                                                         }
                                                        

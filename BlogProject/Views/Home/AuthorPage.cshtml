@@ -66,7 +66,7 @@
                         <div class="post-content">
                             <div class="post-cat">
                                 <div class="post-cat-list">
-                                    <a class="hover-flip-item-wrapper" href="#">
+                                    <a class="hover-flip-item-wrapper" asp-controller="BlogPosts" asp-action="Details" asp-route-slug="@blogPost.Slug">
                                         <span class="hover-flip-item">
                                             <span data-text="@blogPost.Category!.Name">@blogPost.Category.Name</span>
                                         </span>
@@ -74,7 +74,7 @@
                                 </div>
                             </div>
                             <h4 class="title">
-                                <a href="post-details.html">
+                                <a asp-controller="Content" asp-action="@blogPost.Slug">
                                     @blogPost.Title
                                 </a>
                             </h4>
@@ -131,15 +131,6 @@
                     </div>
                     <!-- End Single Widget  -->
                     <!-- Start Single Widget  -->
-                    <div class="axil-single-widget widget widget_search mb--30">
-                        <h5 class="widget-title">Search</h5>
-                        <form action="#">
-                            <div class="axil-search form-group">
-                                <button type="submit" class="search-button"><i class="fal fa-search"></i></button>
-                                <input type="text" class="form-control" placeholder="Search">
-                            </div>
-                        </form>
-                    </div>
                     <!-- End Single Widget  -->
                     <!-- Start Single Widget  -->
                     <div class="axil-single-widget widget widget_postlist mb--30">
