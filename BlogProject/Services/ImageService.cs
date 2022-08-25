@@ -29,7 +29,7 @@ namespace BlogProject.Services
 
             try
             {
-                string ImageBase64Data = Convert.ToBase64String(fileData);
+                string ImageBase64Data = Convert.ToBase64String(fileData!);
                 return string.Format($"data:{extension};base64,{ImageBase64Data}");
             }
             catch (Exception)

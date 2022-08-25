@@ -6,10 +6,11 @@ using MailKit.Security;
 using MimeKit;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace BlogProject.Services
 {
-    public class EmailService : IEmailService
+    public class EmailService : IEmailSender
     {
         private readonly MailSettings _mailSettings;
 
@@ -20,7 +21,7 @@ namespace BlogProject.Services
 
         public async Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            var emailSender = _mailSettings.Email;
+            var emailSender = _mailSettings.Email ?? Environment.GetEnvironmentVariable("Email");
 
             MimeMessage newEmail = new();
 

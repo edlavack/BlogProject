@@ -3,6 +3,7 @@ using BlogProject.Models;
 using BlogProject.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
@@ -15,10 +16,10 @@ namespace BlogProject.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
         private readonly IBlogPostService _blogPostService;
-        private readonly IEmailService _emailService;
+        private readonly IEmailSender _emailService;
         private readonly UserManager<BlogUser> _userManager;
 
-        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context, IBlogPostService blogPostService, IEmailService emailService, UserManager<BlogUser> userManager )
+        public HomeController(ILogger<HomeController> logger,ApplicationDbContext context, IBlogPostService blogPostService, IEmailSender emailService, UserManager<BlogUser> userManager )
         {
             _logger = logger;
             _context = context;

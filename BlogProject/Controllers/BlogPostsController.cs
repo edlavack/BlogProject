@@ -277,7 +277,7 @@ namespace BlogProject.Controllers
             }
             var blogPost = await _context.BlogPosts.FindAsync(id);
 
-            blogPost.IsDeleted = true;
+            blogPost!.IsDeleted = true;
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
