@@ -184,7 +184,7 @@ namespace BlogProject.Services
             try
             {
             List<BlogPost> blogPosts = await _context.BlogPosts
-                                    .Where(b => b.IsDeleted == false)
+                                    .Where(b => b.IsDeleted == false && b.CategoryId == categoryId)
                                     .Include(b => b.Comments)
                                          .ThenInclude(c => c.Author)
                                     .Include(b => b.Category)

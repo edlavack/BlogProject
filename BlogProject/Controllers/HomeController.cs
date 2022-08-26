@@ -36,7 +36,7 @@ namespace BlogProject.Controllers
             IEnumerable<BlogPost> posts = (await _blogPostService.GetAllBlogPostsAsync()).Where(b=> b.IsPublished == true);
             IPagedList<BlogPost> blogPosts = await posts.ToPagedListAsync(page, pageSize);
 
-            return View(posts);
+            return View(blogPosts);
         }
 
         public IActionResult Index()
