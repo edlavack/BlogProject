@@ -103,7 +103,7 @@ namespace BlogProject.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,BlogPostId,AuthorId,Created,LastUpdated,UpdateReason,Body")] Comment comment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,BlogPostId,AuthorId,Created,Body")] Comment comment)
         {
             if (id != comment.Id)
             {
@@ -114,7 +114,8 @@ namespace BlogProject.Controllers
             {
                 try
                 {
-                    _context.Update(comment);
+                    comment.Created = DataUtility.GetPostGresDate(comment.Created);
+                    comment.LastUpdated = DataUtility.GetPostGresDate(DateTime.Now);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -128,7 +129,7 @@ namespace BlogProject.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("AuthorPage", "Home");
             }
             ViewData["AuthorId"] = new SelectList(_context.Users, "Id", "Id", comment.AuthorId);
             ViewData["BlogPostId"] = new SelectList(_context.BlogPosts, "Id", "Content", comment.BlogPostId);
