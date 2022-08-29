@@ -82,7 +82,7 @@
                        
                     </figure>
                     <p>
-                        @Model.Content
+                        @Html.Raw(Model.Content)
                     </p>
                     <div class="tagcloud">
                         @foreach (Tag tag in Model.Tags)
