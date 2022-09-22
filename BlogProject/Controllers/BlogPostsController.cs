@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace BlogProject.Controllers
 {
     [Authorize(Roles ="Administrator")]
+    [AllowAnonymous]
+    
     public class BlogPostsController : Controller
     {
         private readonly ApplicationDbContext _context;
